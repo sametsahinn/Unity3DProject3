@@ -6,9 +6,9 @@ public class CharacterAnimation
 {
     Animator animator;
 
-    public CharacterAnimation(PlayerController entity)
+    public CharacterAnimation(IEntityController entity)
     {
-        this.animator = entity.GetComponentInChildren<Animator>();
+        this.animator = entity.transform.GetComponentInChildren<Animator>();
     }
 
 
