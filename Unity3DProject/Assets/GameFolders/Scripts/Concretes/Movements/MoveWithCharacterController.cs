@@ -8,6 +8,8 @@ public class MoveWithCharacterController : IMover
 
     float moveSpeed;
 
+    public float Velocity => characterController.velocity.magnitude;
+
     public MoveWithCharacterController(PlayerController playerController)
     {
         characterController = playerController.GetComponent<CharacterController>();

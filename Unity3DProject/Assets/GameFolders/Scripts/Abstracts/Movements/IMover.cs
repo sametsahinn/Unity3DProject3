@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IMover 
 {
     void MoveAction(Vector3 direction, float moveSpeed);
+    float Velocity { get; }
 }

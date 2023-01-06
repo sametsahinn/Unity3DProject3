@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     IInputReader input;
     IMover mover;
+    CharacterAnimation animation;
 
     Vector3 direction;
 
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     {
         input = GetComponent<IInputReader>();
         mover = new MoveWithCharacterController(this);
+        animation = new CharacterAnimation(this);
     }
 
     private void Update()
@@ -26,5 +28,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         mover.MoveAction(direction, moveSpeed);
+    }
+
+    public void LateUpdate()
+    {
+
+        animation.MoveAnimation(direction.magnitude);
     }
 }
