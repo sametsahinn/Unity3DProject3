@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IEntityController
 {
     [Header("Movement Informations")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float turnSpeed = 10f;
     [SerializeField] Transform turnTransform;
-    
+    [SerializeField] WeaponController weaponController;
+
 
     IInputReader input;
     IMover mover;
@@ -38,6 +39,11 @@ public class PlayerController : MonoBehaviour
 
         xRotator.RotationAction(input.Rotation.x, turnSpeed);
         yRotator.RotationAction(input.Rotation.y, turnSpeed);
+
+        if (input.IsAttackButtonPress)
+        {
+            weaponController.Attack();
+        }
     }
 
     private void FixedUpdate()
