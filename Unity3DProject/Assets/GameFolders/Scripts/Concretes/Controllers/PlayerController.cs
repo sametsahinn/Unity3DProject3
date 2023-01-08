@@ -75,6 +75,6 @@ public class PlayerController : MonoBehaviour, IEntityController
         // if (health.IsDead) return;
 
         animation.MoveAnimation(direction.magnitude);
-        // animation.AttackAnimation(input.IsAttackButtonPress);
+        animation.AttackAnimation(input.IsAttackButtonPress);
     }
 }

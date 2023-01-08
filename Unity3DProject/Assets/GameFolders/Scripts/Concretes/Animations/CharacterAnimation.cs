@@ -18,4 +18,14 @@ public class CharacterAnimation
 
         animator.SetFloat("MoveSpeed", moveSpeed, 0.1f, Time.deltaTime);
     }
+
+    public void AttackAnimation(bool canAttack)
+    {
+        animator.SetBool("IsAttack", canAttack);
+    }
+
+    public void DeadAnimation(string parameterName)
+    {
+        animator.SetTrigger(parameterName);
+    }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MeleeAttackRangeDisplay : MonoBehaviour
 {
-    [SerializeField] AttackScriptableObject attackScriptableObject;
+    [SerializeField] float radius = 1f;
 
     private void OnDrawGizmos()
     {
@@ -14,7 +14,6 @@ public class MeleeAttackRangeDisplay : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(this.transform.position, attackScriptableObject.FloatValue);
-
+        Gizmos.DrawWireSphere(this.transform.position, radius);
     }
 }

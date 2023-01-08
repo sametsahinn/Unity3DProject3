@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MeleeAttackHandToHand
   m_EditorClassIdentifier: 
   damage: 1
-  floatValue: 1
+  floatValue: 0.3
   layerMask:
     serializedVersion: 2
     m_Bits: 2147483647
-  attackMaxDelay: 0.25
+  attackMaxDelay: 1
   animatorOverride: {fileID: 0}
