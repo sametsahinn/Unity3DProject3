@@ -7,7 +7,6 @@ public class RangeAttackType : IAttackType
     AttackScriptableObject attackScriptableObject;
     Camera camera;
 
-
     public RangeAttackType(Transform transform, AttackScriptableObject attackScriptableObject)
     {
         camera = transform.GetComponent<Camera>();

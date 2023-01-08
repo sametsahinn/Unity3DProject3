@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] bool canFire;
+
     [SerializeField] Transform transform;
     [SerializeField] AttackScriptableObject attackScriptableObject;
     public AnimatorOverrideController AnimatorOverride => attackScriptableObject.AnimatorOverride;
@@ -16,6 +17,7 @@ public class WeaponController : MonoBehaviour
     private void Awake()
     {
         attackType = new RangeAttackType(this.transform, attackScriptableObject);
+       // attackType = GetComponent<IAttackType>();
     }
 
     private void Update()

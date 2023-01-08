@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Attack Info", menuName = "Create Attack Information / Create New", order = 1)]
+[CreateAssetMenu(fileName = "Attack Info", menuName = "Combat/Attack Information / Create New", order = 1)]
 public class AttackScriptableObject : ScriptableObject
 {
     [SerializeField] int damage = 10;

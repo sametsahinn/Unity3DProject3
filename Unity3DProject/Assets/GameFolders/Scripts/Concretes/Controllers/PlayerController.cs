@@ -33,17 +33,29 @@ public class PlayerController : MonoBehaviour, IEntityController
         input = GetComponent<IInputReader>();
         mover = new MoveWithCharacterController(this);
         animation = new CharacterAnimation(this);
-        // health = GetComponent<IHealth>();
+        health = GetComponent<IHealth>();
 
         xRotator = new RotatorX(this);
         yRotator = new RotatorY(this);
 
         inventory = GetComponent<InventoryController>();
+    }
 
+    void OnEnable()
+    {
+        health.OnDead += () =>
+        {
+            animation.DeadAnimation("death");
+            // gameOverPanel.SetActive(true);
+        };
+
+        //EnemyManager.Instance.Targets.Add(this.transform);
     }
 
     private void Update()
     {
+        if (health.IsDead) return;
+
         direction = input.Direction;
         rotation = input.Rotation;
 
@@ -64,7 +76,7 @@ public class PlayerController : MonoBehaviour, IEntityController
 
     private void FixedUpdate()
     {
-        // if (health.IsDead) return;
+        if (health.IsDead) return;
 
         mover.MoveAction(direction, moveSpeed);        
     }
@@ -72,7 +84,7 @@ public class PlayerController : MonoBehaviour, IEntityController
     public void LateUpdate()
     {
 
-        // if (health.IsDead) return;
+        if (health.IsDead) return;
 
         animation.MoveAnimation(direction.magnitude);
         animation.AttackAnimation(input.IsAttackButtonPress);

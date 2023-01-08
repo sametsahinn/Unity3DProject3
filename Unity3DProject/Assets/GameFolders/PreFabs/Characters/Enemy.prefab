@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 2393480769357947457}
   - component: {fileID: 8620692429662701092}
   - component: {fileID: 7275394388816656404}
+  - component: {fileID: 1495695065}
   - component: {fileID: 8620692429662701094}
   - component: {fileID: 8620692429662701093}
   - component: {fileID: 2559310505617934044}
@@ -97,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8192698e1eb9e42a7167977af369a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPreFab: {fileID: 0}
 --- !u!114 &7275394388816656404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +110,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91569eee444efe45b4f85634f690c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healtInfo: {fileID: 11400000, guid: 3ef7b35c7d07ed84dbb6d0aa8b89d4f4, type: 2}
+  healthInfo: {fileID: 11400000, guid: 3ef7b35c7d07ed84dbb6d0aa8b89d4f4, type: 2}
+--- !u!114 &1495695065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6994064681768210189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c45e95a928cd34dbbfec3719a25b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _delayTime: 5
 --- !u!136 &8620692429662701094
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -204,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c85a9b6ef89fc40bcbd91b835573fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.3
+  radius: 0.5
 --- !u!1 &8575335794128613417
 GameObject:
   m_ObjectHideFlags: 0
