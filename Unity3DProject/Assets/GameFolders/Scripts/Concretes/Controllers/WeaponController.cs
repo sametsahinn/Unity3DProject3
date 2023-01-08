@@ -8,6 +8,7 @@ public class WeaponController : MonoBehaviour
 
     [SerializeField] Transform transform;
     [SerializeField] AttackScriptableObject attackScriptableObject;
+
     public AnimatorOverrideController AnimatorOverride => attackScriptableObject.AnimatorOverride;
 
     float currentTime;
@@ -16,8 +17,9 @@ public class WeaponController : MonoBehaviour
 
     private void Awake()
     {
-        attackType = new RangeAttackType(this.transform, attackScriptableObject);
-       // attackType = GetComponent<IAttackType>();
+        // attackType = new RangeAttackType(this.transform, attackScriptableObject);
+        // attackType = GetComponent<IAttackType>();
+        attackType = attackScriptableObject.GetAttackType(transform);
     }
 
     private void Update()

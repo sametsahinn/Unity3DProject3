@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour, IEntityController
             // gameOverPanel.SetActive(true);
         };
 
-        //EnemyManager.Instance.Targets.Add(this.transform);
+        EnemyManager.Instance.Targets.Add(this.transform);
     }
 
     private void Update()

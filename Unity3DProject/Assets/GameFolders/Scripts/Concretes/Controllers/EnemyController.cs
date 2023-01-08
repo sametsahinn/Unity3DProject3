@@ -65,12 +65,11 @@ public class EnemyController : MonoBehaviour, IEnemyController
 
     void OnDestroy()
     {
-        //EnemyManager.Instance.RemoveEnemyController(this);
+        EnemyManager.Instance.RemoveEnemyController(this);
     }
 
     public void FindNearestTarget()
-    {
-        /*
+    {        
         Transform nearest = EnemyManager.Instance.Targets[0];
 
         foreach (Transform target in EnemyManager.Instance.Targets)
@@ -84,6 +83,6 @@ public class EnemyController : MonoBehaviour, IEnemyController
             }
         }
 
-        Target = nearest;*/
+        Target = nearest;
     }
 }
