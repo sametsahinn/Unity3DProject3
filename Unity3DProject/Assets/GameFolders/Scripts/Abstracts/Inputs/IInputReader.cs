@@ -9,4 +9,6 @@ public interface IInputReader
 
     bool IsAttackButtonPress { get; }
 
+    bool IsInventoryButtonPressed { get; }
+
 }

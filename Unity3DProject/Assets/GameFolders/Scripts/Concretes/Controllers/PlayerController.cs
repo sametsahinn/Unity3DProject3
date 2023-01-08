@@ -8,17 +8,23 @@ public class PlayerController : MonoBehaviour, IEntityController
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float turnSpeed = 10f;
     [SerializeField] Transform turnTransform;
-    [SerializeField] WeaponController weaponController;
+    // [SerializeField] WeaponController weaponController;
 
+    [Header("Uis")]
+    [SerializeField] GameObject _gameOverPanel;
 
-    IInputReader input;
+    IInputReader input;  
     IMover mover;
+    IHealth health;
+    IRotator ribRotator;
     IRotator xRotator;
     IRotator yRotator;
 
     CharacterAnimation animation;
+    InventoryController inventory;
 
     Vector3 direction;
+    Vector3 rotation;
 
     public Transform TurnTransform => turnTransform;
 
@@ -27,33 +33,48 @@ public class PlayerController : MonoBehaviour, IEntityController
         input = GetComponent<IInputReader>();
         mover = new MoveWithCharacterController(this);
         animation = new CharacterAnimation(this);
+        // health = GetComponent<IHealth>();
 
         xRotator = new RotatorX(this);
         yRotator = new RotatorY(this);
+
+        inventory = GetComponent<InventoryController>();
 
     }
 
     private void Update()
     {
         direction = input.Direction;
+        rotation = input.Rotation;
 
-        xRotator.RotationAction(input.Rotation.x, turnSpeed);
-        yRotator.RotationAction(input.Rotation.y, turnSpeed);
+        xRotator.RotationAction(rotation.x, turnSpeed);
+        yRotator.RotationAction(rotation.y, turnSpeed);
 
         if (input.IsAttackButtonPress)
         {
-            weaponController.Attack();
+            // weaponController.Attack();
+            inventory.CurrentWeapon.Attack();
+        }
+
+        if (input.IsInventoryButtonPressed)
+        {
+            inventory.ChangeWeapon();
         }
     }
 
     private void FixedUpdate()
     {
+        // if (health.IsDead) return;
+
         mover.MoveAction(direction, moveSpeed);        
     }
 
     public void LateUpdate()
     {
 
+        // if (health.IsDead) return;
+
         animation.MoveAnimation(direction.magnitude);
+        // animation.AttackAnimation(input.IsAttackButtonPress);
     }
 }

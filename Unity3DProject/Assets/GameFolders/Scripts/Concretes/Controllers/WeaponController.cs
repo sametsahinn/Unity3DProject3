@@ -5,30 +5,31 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] bool canFire;
-    [SerializeField] float attackMaxDelay = 0.25f;
-    [SerializeField] float distance = 100f;
-    [SerializeField] Camera camera;
-    [SerializeField] LayerMask layerMask;
+    [SerializeField] Transform transform;
+    [SerializeField] AttackScriptableObject attackScriptableObject;
+    public AnimatorOverrideController AnimatorOverride => attackScriptableObject.AnimatorOverride;
 
     float currentTime;
+
+    IAttackType attackType;
+
+    private void Awake()
+    {
+        attackType = new RangeAttackType(this.transform, attackScriptableObject);
+    }
 
     private void Update()
     {
         currentTime += Time.deltaTime;
 
-        canFire = currentTime > attackMaxDelay;
+        canFire = currentTime > attackScriptableObject.AttackMaxDelay;
     }
 
     public void Attack()
     {
-        if (!canFire) return;
+        if (!canFire) return;       
 
-        Ray ray = camera.ViewportPointToRay(Vector3.one / 2f);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, distance, layerMask))
-        {
-            Debug.Log(hit.collider.gameObject.name);
-        }
+        attackType.ActionAttack();
 
         currentTime = 0f;
 

@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2393480769357947457}
   - component: {fileID: 8620692429662701092}
+  - component: {fileID: 7275394388816656404}
+  - component: {fileID: 8620692429662701094}
+  - component: {fileID: 8620692429662701093}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -45,6 +48,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8192698e1eb9e42a7167977af369a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPreFab: {fileID: 0}
+--- !u!114 &7275394388816656404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6994064681768210189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91569eee444efe45b4f85634f690c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healtInfo: {fileID: 11400000, guid: 3ef7b35c7d07ed84dbb6d0aa8b89d4f4, type: 2}
+--- !u!136 &8620692429662701094
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6994064681768210189}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.38
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.8662374, z: 0}
+--- !u!195 &8620692429662701093
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6994064681768210189}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.35
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1.5
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.8
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &8620692430861298568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -107,3 +160,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c2d8127bd79226b4fafd0bc0df5f704d, type: 3}
   m_PrefabInstance: {fileID: 8620692430861298568}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8891147754750858969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c2d8127bd79226b4fafd0bc0df5f704d, type: 3}
+  m_PrefabInstance: {fileID: 8620692430861298568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8620692429662701095
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8891147754750858969}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: c2d8127bd79226b4fafd0bc0df5f704d, type: 3}
+  m_Controller: {fileID: 9100000, guid: edd202036b2f45844b515aad044b4505, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
