@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReturnButton : MonoBehaviour
+public class ReturnButton : MyButton
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void HandleOnButtonClicked()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameManager.Instance.ReturnMenu();
     }
 }

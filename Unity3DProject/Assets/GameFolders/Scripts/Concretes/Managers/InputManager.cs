@@ -1,18 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] GameObject[] prefabs;
+
+    PlayerInputManager playerInputManager;
+    int playerIndex;
+
+
+    void Awake()
     {
-        
+        playerInputManager = GetComponent<PlayerInputManager>();
+        playerInputManager.playerPrefab = prefabs[playerIndex];
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnEnable()
     {
-        
+        StartCoroutine(LoadPlayersAsync());
+    }
+
+    IEnumerator LoadPlayersAsync()
+    {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(1f);
+
+        for (int i = 0; i < GameManager.Instance.PlayerCount; i++)
+        {
+            playerInputManager.JoinPlayer(playerIndex);
+            yield return waitForSeconds;
+        }
+    }
+
+    public void HandleOnJoin()
+    {
+        playerIndex++;
+
+        if (playerIndex >= prefabs.Length) playerIndex = prefabs.Length - 1;
+
+        playerInputManager.playerPrefab = prefabs[playerIndex];
+
+        playerInputManager.splitScreen = true;
+    }
+
+    public void HandleOnLeft()
+    {
+        playerIndex--;
+
+        if (playerIndex < 0) playerIndex = 0;
+
+        playerInputManager.playerPrefab = prefabs[playerIndex];
+
+        playerInputManager.splitScreen = false;
     }
 }

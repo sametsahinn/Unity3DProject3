@@ -17,7 +17,6 @@ public class EnemyController : MonoBehaviour, IEnemyController
     public Dead Dead { get; private set; }
     public float Magnitude => navMeshAgent.velocity.magnitude;
 
-
     public bool CanAttack =>
           Vector3.Distance(Target.position, this.transform.position) <= navMeshAgent.stoppingDistance &&
           navMeshAgent.velocity == Vector3.zero;

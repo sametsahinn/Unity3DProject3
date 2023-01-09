@@ -32,7 +32,7 @@ public class AttackState : IState
     public void TickFixed()
     {
         enemyController.Inventory.CurrentWeapon.Attack();
-        enemyController.FindNearestTarget();
+        // enemyController.FindNearestTarget();
     }
 
     public void TickLate()
