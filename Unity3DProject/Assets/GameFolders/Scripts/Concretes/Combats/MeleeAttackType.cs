@@ -2,21 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeAttackType : IAttackType
+public class MeleeAttackType : MonoBehaviour, IAttackType
 {
-    // [SerializeField] Transform _transformObject;
-    // [SerializeField] AttackScriptableObject _attackSo;
+    [SerializeField] AttackScriptableObject attackScriptableObject;
+    [SerializeField] Transform transform;
 
-    // public AttackScriptableObject AttackInfo => _attackSo;
+    public AttackScriptableObject AttackInfo => attackScriptableObject;
 
-    AttackScriptableObject attackScriptableObject;
-    Transform transform;
-
+    /*
     public MeleeAttackType(Transform transform, AttackScriptableObject attackScriptableObject)
     {
         this.transform = transform;
         this.attackScriptableObject = attackScriptableObject;
-    }
+    }*/
 
     public void ActionAttack()
     {
@@ -30,5 +28,7 @@ public class MeleeAttackType : IAttackType
                 health.TakeDamage(attackScriptableObject.Damage);
             }
         }
+
+        SoundManager.Instance.MeleeAttackSound(attackScriptableObject.Clip, transform.position);
     }
 }

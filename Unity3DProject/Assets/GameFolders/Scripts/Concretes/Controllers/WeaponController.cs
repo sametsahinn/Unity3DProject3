@@ -6,27 +6,26 @@ public class WeaponController : MonoBehaviour
 {
     [SerializeField] bool canFire;
 
-    [SerializeField] Transform transform;
-    [SerializeField] AttackScriptableObject attackScriptableObject;
-
-    public AnimatorOverrideController AnimatorOverride => attackScriptableObject.AnimatorOverride;
-
-    float currentTime;
+    // [SerializeField] Transform transform;
+    // [SerializeField] AttackScriptableObject attackScriptableObject;
 
     IAttackType attackType;
+
+    public AnimatorOverrideController AnimatorOverride => attackType.AttackInfo.AnimatorOverride;
+    float currentTime;    
 
     private void Awake()
     {
         // attackType = new RangeAttackType(this.transform, attackScriptableObject);
-        // attackType = GetComponent<IAttackType>();
-        attackType = attackScriptableObject.GetAttackType(transform);
+        attackType = GetComponent<IAttackType>();
+        // attackType = attackScriptableObject.GetAttackType(transform);
     }
 
     private void Update()
     {
         currentTime += Time.deltaTime;
 
-        canFire = currentTime > attackScriptableObject.AttackMaxDelay;
+        canFire = currentTime > attackType.AttackInfo.AttackMaxDelay;
     }
 
     public void Attack()

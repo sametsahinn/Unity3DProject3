@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IAttackType
 {
     void ActionAttack();
+    public AttackScriptableObject AttackInfo { get; }
 }

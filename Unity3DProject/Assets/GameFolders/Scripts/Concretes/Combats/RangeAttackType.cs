@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeAttackType : IAttackType
+public class RangeAttackType : MonoBehaviour, IAttackType
 {
-    AttackScriptableObject attackScriptableObject;
-    Camera camera;
+    [SerializeField] AttackScriptableObject attackScriptableObject;
+    [SerializeField] Camera camera;
+    [SerializeField] BulletFxController bulletFx;
+    [SerializeField] Transform bulletPoint;
 
+    public AttackScriptableObject AttackInfo => attackScriptableObject;
+
+    /*
     public RangeAttackType(Transform transform, AttackScriptableObject attackScriptableObject)
     {
         camera = transform.GetComponent<Camera>();
         this.attackScriptableObject = attackScriptableObject;
-    }
+    }*/
 
     public void ActionAttack()
     {
@@ -26,5 +31,10 @@ public class RangeAttackType : IAttackType
                 health.TakeDamage(attackScriptableObject.Damage);
             }
         }
+
+        var bullet = Instantiate(bulletFx, bulletPoint.position, bulletPoint.rotation);
+        bullet.SetDirection(ray.direction);
+
+        SoundManager.Instance.RangeAttackSound(attackScriptableObject.Clip, camera.transform.position);
     }
 }

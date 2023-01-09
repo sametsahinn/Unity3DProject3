@@ -34,7 +34,9 @@ public class EnemyController : MonoBehaviour, IEnemyController
     }
     private void Start()
     {
-        Target = FindObjectOfType<PlayerController>().transform;
+        // Target = FindObjectOfType<PlayerController>().transform;
+
+        FindNearestTarget();
 
         ChaseState chaseState = new ChaseState(this);
         AttackState attackState = new AttackState(this);

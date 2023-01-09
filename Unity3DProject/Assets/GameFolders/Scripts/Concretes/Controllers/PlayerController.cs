@@ -8,15 +8,17 @@ public class PlayerController : MonoBehaviour, IEntityController
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float turnSpeed = 10f;
     [SerializeField] Transform turnTransform;
+    [SerializeField] Transform neckTransform;
+
     // [SerializeField] WeaponController weaponController;
 
     [Header("Uis")]
-    [SerializeField] GameObject _gameOverPanel;
+    [SerializeField] GameObject gameOverPanel;
 
     IInputReader input;  
     IMover mover;
     IHealth health;
-    IRotator ribRotator;
+    IRotator neckRotator;
     IRotator xRotator;
     IRotator yRotator;
 
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour, IEntityController
 
         xRotator = new RotatorX(this);
         yRotator = new RotatorY(this);
+        neckRotator = new NeckRotator(neckTransform);
 
         inventory = GetComponent<InventoryController>();
     }
@@ -46,10 +49,15 @@ public class PlayerController : MonoBehaviour, IEntityController
         health.OnDead += () =>
         {
             animation.DeadAnimation("death");
-            // gameOverPanel.SetActive(true);
+            gameOverPanel.SetActive(true);
         };
 
         EnemyManager.Instance.Targets.Add(this.transform);
+    }
+
+    void OnDisable()
+    {
+        EnemyManager.Instance.Targets.Remove(this.transform);
     }
 
     private void Update()
@@ -88,5 +96,7 @@ public class PlayerController : MonoBehaviour, IEntityController
 
         animation.MoveAnimation(direction.magnitude);
         animation.AttackAnimation(input.IsAttackButtonPress);
+
+        neckRotator.RotationAction(rotation.y * -1f, turnSpeed);
     }
 }

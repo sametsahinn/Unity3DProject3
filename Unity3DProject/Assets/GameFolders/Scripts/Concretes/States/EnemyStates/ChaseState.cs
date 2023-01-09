@@ -30,7 +30,7 @@ public class ChaseState : IState
 
     public void TickFixed()
     {
-        // enemyController.FindNearestTarget();
+        enemyController.FindNearestTarget();
     }
 
     public void TickLate()
