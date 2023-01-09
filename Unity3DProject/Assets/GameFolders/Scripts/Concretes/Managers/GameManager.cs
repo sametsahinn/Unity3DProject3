@@ -5,18 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
-    [SerializeField] int _waveLevel = 1;
-    [SerializeField] float _waitNextLevel = 10f;
-    [SerializeField] float _waveMultiple = 1.2f;
-    [SerializeField] int _maxWaveBoundaryCount = 50;
-    [SerializeField] int _playerCount = 0;
+    [SerializeField] int waveLevel = 1;
+    [SerializeField] float waitNextLevel = 10f;
+    [SerializeField] float waveMultiple = 1.2f;
+    [SerializeField] int maxWaveBoundaryCount = 50;
+    [SerializeField] int playerCount = 0;
 
-    int _currentWaveMaxCount;
-    public int PlayerCount => _playerCount;
+    int currentWaveMaxCount;
+    public int PlayerCount => playerCount;
 
     public event System.Action<int> OnNextWave;
 
-    public bool IsWaveFinished => _currentWaveMaxCount <= 0;
+    public bool IsWaveFinished => currentWaveMaxCount <= 0;
 
     void Awake()
     {
@@ -25,7 +25,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     void Start()
     {
-        _currentWaveMaxCount = _maxWaveBoundaryCount;
+        currentWaveMaxCount = maxWaveBoundaryCount;
     }
 
     public void LoadLevel(string name)
@@ -49,33 +49,33 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
         else
         {
-            _currentWaveMaxCount--;
+            currentWaveMaxCount--;
         }
     }
 
     private IEnumerator StartNextWaveAsync()
     {
-        yield return new WaitForSeconds(_waitNextLevel);
-        _maxWaveBoundaryCount = System.Convert.ToInt32(_maxWaveBoundaryCount * _waveMultiple);
-        _currentWaveMaxCount = _maxWaveBoundaryCount;
-        _waveLevel++;
-        OnNextWave?.Invoke(_waveLevel);
+        yield return new WaitForSeconds(waitNextLevel);
+        maxWaveBoundaryCount = System.Convert.ToInt32(maxWaveBoundaryCount * waveMultiple);
+        currentWaveMaxCount = maxWaveBoundaryCount;
+        waveLevel++;
+        OnNextWave?.Invoke(waveLevel);
     }
 
     public void IncreasePlayerCount()
     {
-        _playerCount++;
+        playerCount++;
     }
 
     public void ReturnMenu()
     {
-        if (_playerCount > 1)
+        if (playerCount > 1)
         {
-            _playerCount--;
+            playerCount--;
         }
         else
         {
-            _playerCount = 0;
+            playerCount = 0;
             EnemyManager.Instance.DestroyAllEnemies();
             EnemyManager.Instance.Targets.Clear();
             LoadLevel("Menu");

@@ -18,7 +18,7 @@ public class SpawnerController : MonoBehaviour
     {
         currentTime += Time.deltaTime;
 
-        if (currentTime > maxTime && EnemyManager.Instance.CanSpawn) //&& !GameManager.Instance.IsWaveFinished
+        if (currentTime > maxTime && EnemyManager.Instance.CanSpawn && !GameManager.Instance.IsWaveFinished)
         {
             Spawn();
         }

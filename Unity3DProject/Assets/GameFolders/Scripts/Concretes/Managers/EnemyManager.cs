@@ -4,39 +4,39 @@ using UnityEngine;
 
 public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
 {
-    [SerializeField] int _maxCountOnGame = 50;
-    [SerializeField] List<EnemyController> _enemies;
+    [SerializeField] int maxCountOnGame = 50;
+    [SerializeField] List<EnemyController> enemies;
 
     public List<Transform> Targets { get; private set; }
-    public bool CanSpawn => _maxCountOnGame > _enemies.Count;
-    public bool IsListEmpty => _enemies.Count <= 0;
+    public bool CanSpawn => maxCountOnGame > enemies.Count;
+    public bool IsListEmpty => enemies.Count <= 0;
 
     void Awake()
     {
         SetSingletonThisGameObject(this);
-        _enemies = new List<EnemyController>();
+        enemies = new List<EnemyController>();
         Targets = new List<Transform>();
     }
 
     public void AddEnemyController(EnemyController enemyController)
     {
         enemyController.transform.parent = this.transform;
-        _enemies.Add(enemyController);
+        enemies.Add(enemyController);
     }
 
     public void RemoveEnemyController(EnemyController enemyController)
     {
-        _enemies.Remove(enemyController);
-        // GameManager.Instance.DecreaseWaveCount();
+        enemies.Remove(enemyController);
+        GameManager.Instance.DecreaseWaveCount();
     }
 
     public void DestroyAllEnemies()
     {
-        foreach (EnemyController enemyController in _enemies)
+        foreach (EnemyController enemyController in enemies)
         {
             Destroy(enemyController.gameObject);
         }
 
-        _enemies.Clear();
+        enemies.Clear();
     }
 }
