@@ -1856,18 +1856,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7005732987900782441, guid: 63ef7053be063f44bb9df153329ff7eb, type: 3}
-      propertyPath: prefabs.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7005732987900782441, guid: 63ef7053be063f44bb9df153329ff7eb, type: 3}
-      propertyPath: prefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 7605116339436919841, guid: e25da478154e87f4fbb2754c448ac22c, type: 3}
-    - target: {fileID: 7005732987900782441, guid: 63ef7053be063f44bb9df153329ff7eb, type: 3}
-      propertyPath: prefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 8284548329226266267, guid: aced3be6d7a138646a8a8005e3e26da8, type: 3}
     - target: {fileID: 7005732987900782442, guid: 63ef7053be063f44bb9df153329ff7eb, type: 3}
       propertyPath: m_Name
       value: PlayerInputManager

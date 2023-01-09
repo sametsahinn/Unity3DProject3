@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChaseState : IState
 {
-    float _speed = 10f;
+    float speed = 10f;
     IEnemyController enemyController;
 
     public ChaseState(IEnemyController enemyController)
@@ -25,7 +25,7 @@ public class ChaseState : IState
 
     public void Tick()
     {
-        enemyController.Mover.MoveAction(enemyController.Target.position, _speed);
+        enemyController.Mover.MoveAction(enemyController.Target.position, speed);
     }
 
     public void TickFixed()

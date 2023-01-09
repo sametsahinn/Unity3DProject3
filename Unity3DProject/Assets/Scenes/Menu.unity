@@ -579,8 +579,8 @@ GameObject:
   - component: {fileID: 679587013}
   - component: {fileID: 679587016}
   - component: {fileID: 679587015}
-  - component: {fileID: 679587014}
   - component: {fileID: 679587017}
+  - component: {fileID: 679587014}
   m_Layer: 5
   m_Name: Player2Button
   m_TagString: Untagged
@@ -1000,8 +1000,8 @@ GameObject:
   - component: {fileID: 1263794278}
   - component: {fileID: 1263794281}
   - component: {fileID: 1263794280}
-  - component: {fileID: 1263794279}
   - component: {fileID: 1263794282}
+  - component: {fileID: 1263794279}
   m_Layer: 5
   m_Name: Player1Button
   m_TagString: Untagged

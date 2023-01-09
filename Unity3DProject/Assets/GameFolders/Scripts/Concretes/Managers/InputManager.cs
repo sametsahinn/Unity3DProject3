@@ -10,7 +10,6 @@ public class InputManager : MonoBehaviour
     PlayerInputManager playerInputManager;
     int playerIndex;
 
-
     void Awake()
     {
         playerInputManager = GetComponent<PlayerInputManager>();
@@ -24,7 +23,7 @@ public class InputManager : MonoBehaviour
 
     IEnumerator LoadPlayersAsync()
     {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(1f);
+        WaitForSeconds waitForSeconds = new WaitForSeconds(0.1f);
 
         for (int i = 0; i < GameManager.Instance.PlayerCount; i++)
         {
